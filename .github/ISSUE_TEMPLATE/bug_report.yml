@@ -53,7 +53,6 @@ body:
     id: logs
     attributes:
       label: Relevant logs or screenshots
-      render: shell
 
   - type: checkboxes
     id: agreement
