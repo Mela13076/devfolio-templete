@@ -1,5 +1,3 @@
-import { details, metadata } from "framer-motion/client";
-
 export const siteConfig = {
     siteName: "Devfolio",
     name: "Your Name Here",
