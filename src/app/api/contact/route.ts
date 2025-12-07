@@ -1,16 +1,16 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import siteConfig from '@/config/siteConfig';
+import { ContactRequestBody } from '@/types';
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-interface ContactRequestBody {
-  name: string;
-  email: string;
-  message: string;
-}
 
 export async function POST(request: Request) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json({ message: "Resend API key not configured. Please add it to your .env file" }, { status: 500 });
+  }
+  const resend = new Resend(apiKey);
+
   try {
     const { name, email, message } = await request.json() as ContactRequestBody
 

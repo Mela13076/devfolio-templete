@@ -25,3 +25,15 @@ export interface BlogLayoutProps {
     lastUpdated?: string;
 
 }
+
+export interface ContactRequestBody {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}

@@ -4,13 +4,10 @@ import { useState } from 'react'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeIn, slideInLeft, slideInRight } from '@/utils/animations'
+import { FormData } from '@/types'
 import siteConfig from '@/config/siteConfig'
 
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
