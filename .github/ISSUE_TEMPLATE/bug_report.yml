@@ -1,0 +1,64 @@
+name: 🐞 Bug Report
+description: Report a reproducible bug in the template.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - Mela13076
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a bug report! Please fill out the details below.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the issue and what you expected to happen.
+      placeholder: Describe the bug clearly...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Share the exact steps to reproduce the issue.
+      placeholder: |
+        1. Go to...
+        2. Click...
+        3. Observe...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Template Version
+      placeholder: e.g. v1.0.0
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+      multiple: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or screenshots
+      render: shell
+
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Code of Conduct Agreement
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
