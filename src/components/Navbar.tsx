@@ -19,9 +19,20 @@ export default function Navbar() {
     <nav className="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-primary">
-            {siteConfig.siteName}
+          {siteConfig.showDevLogo ? (
+            <Link
+            href="/"
+            className="flex items-center justify-center text-xl font-bold text-primary"
+          >
+            <FaCode className="h-6 w-6 text-primary" />
+            <span className="ml-2" >{siteConfig.siteName}</span>
           </Link>
+          ):(
+            <Link href="/" className="text-xl font-bold text-primary">
+              {siteConfig.siteName}
+            </Link>
+          )}
+          
 
           
           {/* Desktop Menu */}

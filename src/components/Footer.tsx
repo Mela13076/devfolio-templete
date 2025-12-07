@@ -9,9 +9,19 @@ export default function Footer() {
       <div className="container max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <Link href="/" className="text-xl font-bold text-primary">
-            {siteConfig.siteName}
+            {siteConfig.showDevLogo ? (
+            <Link
+            href="/"
+            className="flex text-xl font-bold text-primary"
+          >
+            <FaCode className="h-6 w-6 text-primary" />
+            <span className="ml-2" >{siteConfig.siteName}</span>
           </Link>
+          ):(
+            <Link href="/" className="text-xl font-bold text-primary">
+              {siteConfig.siteName}
+            </Link>
+          )}
             <p className="text-sm text-secondary mt-2">
               © {siteConfig.footer.copyrightYear} | {siteConfig.footer.details}
             </p>

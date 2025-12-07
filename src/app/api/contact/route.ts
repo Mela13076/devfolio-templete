@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import siteConfig from '@/config/siteConfig';
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -18,8 +19,8 @@ export async function POST(request: Request) {
     }
 
     await resend.emails.send({
-      from: "Portfolio Contact <art-devfolio@resend.dev>", // you can use a verified domain later
-      to: "trevinoamelia25@gmail.com", // your personal email
+      from: siteConfig.resend.fromEmail, // you can use a verified domain later
+      to: siteConfig.resend.toEmail, // your personal email
       subject: `New message from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>

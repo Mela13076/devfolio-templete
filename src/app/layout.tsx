@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Lines from "@/components/lines";
 import ScrollToTop from "@/components/ScrollToTop";
+import siteConfig from "@/config/siteConfig";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amelia Treviño | Full-Stack Developer & Software Engineer Portfolio",
-  description:
-    "The portfolio of Amelia Treviño — a full-stack developer and computer science graduate passionate about building secure, scalable, and user-focused web applications. Explore projects in Next.js, React, Django, AWS, and more.",
+  title: `${siteConfig.siteName} | ${siteConfig.metadataTitle}`,
+  description: siteConfig.siteDescription
 };
 
 
@@ -31,11 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}>
+    <body className={`min-h-screen flex flex-col bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProviderWrapper>
           <Lines />
           <Navbar />
-          <main className="min-h-screen pt-24">
+          <main className="flex-1 pt-24">
             {children}
           </main>
           <Footer />

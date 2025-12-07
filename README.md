@@ -1,4 +1,15 @@
-# **Developer Portfolio Template (Next.js 15 + MDX + Tailwind)**
+<p align="center">
+  <img src="https://img.shields.io/github/license/Mela13076/devfolio-templete" />
+  <img src="https://img.shields.io/github/stars/Mela13076/devfolio-templete" />
+  <img src="https://img.shields.io/github/issues/Mela13076/devfolio-templete" />
+  <img src="https://img.shields.io/github/forks/Mela13076/devfolio-templete" />
+  <img src="https://img.shields.io/badge/deploy-vercel-black?logo=vercel" />
+</p>
+
+![Devfolio Banner](./public/banner.svg)
+
+
+## **Developer Portfolio Template (Next.js 15 + MDX + Tailwind)**
 
 A modern, customizable developer portfolio built with **Next.js 15, Tailwind CSS, MDX, and Framer Motion**.
 Designed and customized by **Amelia R. Trevino** — now available as an open-source template for anyone to use, modify, and deploy.

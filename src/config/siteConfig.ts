@@ -1,15 +1,18 @@
-import { details } from "framer-motion/client";
+import { details, metadata } from "framer-motion/client";
 
 export const siteConfig = {
     siteName: "Devfolio",
     name: "Your Name Here",
+    metadataTitle: "Developer Portfolio Template",
     siteDescription:
         "A modern, customizable developer portfolio template built with Next.js, Tailwind CSS, and MDX.",
     socials: {
         github: "https://github.com/username",
         linkedin: "https://linkedin.com/in/username",
         twitter: "https://twitter.com/username",
-    },
+    },    
+    showDevLogo: false, // Set to true to show a developer logo (</>) with site name, false for just site name
+
 
     // ========================= NAVIGATION =========================
     navLinks: [
@@ -112,6 +115,12 @@ export const siteConfig = {
         email: "example@example.com",
         phone: "+1 (123) 456-7890",
         location: "Remote",
+    },
+
+    // ========================= Resend CONFIG =========================
+    resend: {
+        fromEmail: "Portfolio Contact <contact@yourdomain.com>", 
+        toEmail: "your.email@domain.com", // your personal email
     },
 
     // ========================= FOOTER CONFIG =========================

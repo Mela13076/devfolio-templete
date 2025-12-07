@@ -1,0 +1,26 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" rx="20" fill="#0f172a"/>
+
+  <!-- Inner glowing gradient panel -->
+  <rect x="20" y="20" width="1160" height="260" rx="20" fill="url(#grad)" opacity="0.08"/>
+
+  <!-- Main Title -->
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle"
+    fill="#ffffff" font-family="Inter, sans-serif" font-size="45" font-weight="700" letter-spacing="1px">
+    Devfolio — Developer Portfolio Template
+  </text>
+
+  <!-- Subheading -->
+  <text x="50%" y="63%" dominant-baseline="middle" text-anchor="middle"
+    fill="#94a3b8" font-family="Inter, sans-serif" font-size="24">
+    Next.js 15 • MDX • Tailwind CSS • Framer Motion • Fully Customizable
+  </text>
+</svg>
