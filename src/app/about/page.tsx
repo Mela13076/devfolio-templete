@@ -55,10 +55,10 @@ export default function About() {
             variants={fadeInUp}
             {...cardHover}
           >
-            <FaLaptopCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
+            <FaLaptopCode className="h-8 w-8 text-primary dark:text-white  mb-4" />
+            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Frontend</h3>
             
-            <ul className="text-secondary space-y-2">
+            <ul className="text-secondary dark:text-white space-y-2">
               {siteConfig.about.skills.frontend.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -70,9 +70,9 @@ export default function About() {
             variants={fadeInUp}
             {...cardHover}
           >
-            <FaDatabase className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Backend</h3>
-            <ul className="text-secondary space-y-2">
+            <FaDatabase className="h-8 w-8 text-primary dark:text-white mb-4" />
+            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Backend</h3>
+            <ul className="text-secondary dark:text-white space-y-2">
               {siteConfig.about.skills.backend.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -84,9 +84,9 @@ export default function About() {
             variants={fadeInUp}
             {...cardHover}
           >
-            <FaCloud className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Cloud & DevOps</h3>
-            <ul className="text-secondary space-y-2">
+            <FaCloud className="h-8 w-8 text-primary dark:text-white mb-4" />
+            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Cloud & DevOps</h3>
+            <ul className="text-secondary dark:text-white space-y-2">
               {siteConfig.about.skills.cloud.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -97,9 +97,9 @@ export default function About() {
             variants={fadeInUp}
             {...cardHover}
           >
-            <FaCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">AI/ Data Science & Security</h3>
-            <ul className="text-secondary space-y-2">
+            <FaCode className="h-8 w-8 text-primary dark:text-white mb-4" />
+            <h3 className="text-xl font-semibold mb-2 dark:text-primary">AI/ Data Science & Security</h3>
+            <ul className="text-secondary dark:text-white space-y-2">
               {siteConfig.about.skills.ai_security.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -110,9 +110,9 @@ export default function About() {
             variants={fadeInUp}
             {...cardHover}
           >
-            <FaGraduationCap className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Tools & Collaboration</h3>
-            <ul className="text-secondary space-y-2">
+            <FaGraduationCap className="h-8 w-8 text-primary dark:text-white mb-4" />
+            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Tools & Collaboration</h3>
+            <ul className="text-secondary dark:text-white space-y-2">
               {siteConfig.about.skills.tools.map((skill) => (
                 <li key={skill}>{skill}</li>
               ))}
@@ -148,7 +148,7 @@ export default function About() {
             >
               <h3 className="text-xl font-semibold mb-2">{exp.role}</h3>
               <p className="text-primary mb-2">{exp.company} • {exp.duration}</p>
-              <ul className="text-secondary list-disc list-inside space-y-2">
+              <ul className="text-secondary dark:text-white list-disc list-inside space-y-2">
                 {exp.points.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
@@ -192,7 +192,7 @@ export default function About() {
               >
                 <h3 className="text-xl font-semibold mb-2">{edu.degree}</h3>
               <p className="text-primary mb-2">{edu.institution} • {edu.duration}</p>
-                <ul className="text-secondary list-disc list-inside space-y-2">
+                <ul className="text-secondary dark:text-white list-disc list-inside space-y-2">
                   {edu.details.map((point, index) => (
                     <li key={index}>{point}</li>
                   ))}

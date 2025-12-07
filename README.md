@@ -4,12 +4,13 @@
   <img src="https://img.shields.io/github/issues/Mela13076/devfolio-templete" />
   <img src="https://img.shields.io/github/forks/Mela13076/devfolio-templete" />
   <img src="https://img.shields.io/badge/deploy-vercel-black?logo=vercel" />
+  <img src="https://github.com/Mela13076/devfolio-templete/actions/workflows/ci.yml/badge.svg"/>
 </p>
 
 ![Devfolio Banner](./public/banner.svg)
 
 
-## **Developer Portfolio Template (Next.js 15 + MDX + Tailwind)**
+## **Devfolio - Developer Portfolio Template (Next.js 15 + MDX + Tailwind)**
 
 A modern, customizable developer portfolio built with **Next.js 15, Tailwind CSS, MDX, and Framer Motion**.
 Designed and customized by **Amelia R. Trevino** — now available as an open-source template for anyone to use, modify, and deploy.
@@ -31,39 +32,53 @@ Designed and customized by **Amelia R. Trevino** — now available as an open-so
   * Blog metadata stored in `/src/contents/blogs.ts`
 * **Automatic routing for blog posts** (`/blogs/[slug]`)
 * **Customizable site information** through one config file: `src/config/siteConfig.ts`
+* **Configurable Theme Presets** — choose from 8 built-in color themes directly in  
+  `src/config/siteConfig.ts` (`blue`, `green`, `purple`, `pink`, `orange`, `red`, `yellow`, `teal`)
+* **Advanced theme customization** — edit or create new palettes in  
+  `src/config/themePresets.ts`
+
 * **Dark & Light mode theme toggle** with customizable color palette
 * **Contact form integrated with Resend API**
 * **Easy to extend, easy to deploy** (free deployment with Vercel)
 * **Clean folder structure** ideal for beginners and scalable for advanced users
 
----
+## 🏁 **Getting Started**
 
-## 🎨 **Customization — Theme & Colors**
+###  **Option 1 — Use This Template (Recommended)**
 
-To modify the site's **primary accent**, **background**, **strokes**, or **dark mode palette**, edit:
+This repository is published as a **GitHub Template**.
 
+If you're building **your own portfolio**, do this to instantly generate your own copy and start customizing your portfolio:
+
+1. Click **“Use this template”** on GitHub
+2. Create your own repo from it
+3. Clone your new repo:
+
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+npm install
 ```
-src/globals.css
-```
+You do **not** need to clone this repo directly unless you plan to contribute.
 
-All colors for light/dark mode are defined as CSS variables.
-Change them to instantly re-theme the entire portfolio.
-
----
-
-# 🚀 Getting Started
-
-## 1️⃣ **Clone the Repository**
+###  **Option 2 — Clone This Repo (For Contributors)**
 
 ```bash
 git clone https://github.com/Mela13076/devfolio-templete.git
-cd devfolio-template
+cd devfolio-templete
 npm install
 ```
 
----
+Use this if you plan to **fix bugs**, **suggest features**, or **submit PRs**.
+See **CONTRIBUTING.md** for details.
 
-## 2️⃣ **Update Your Site Configuration**
+
+
+
+
+## ⬆️ **Update Your Site Configuration**
+This template uses a **content-driven approach**.
+You only edit simple `.ts` files and `.mdx` files — no need to touch React components.
 
 All global website settings are stored in:
 
@@ -77,19 +92,33 @@ You can edit:
 * social links
 * navigation menu
 * footer text
+* about content
 
 The website will automatically update everywhere after modifying this file.
 
+### 🎨 **Customization — Theme Presets & Colors**
 ---
 
-# 📁 Content Management
+This template includes 8 customizable **theme presets** you can switch between in:
+```
+src/config/siteConfig.ts
+```
 
-This template uses a **content-driven approach**.
-You only edit simple `.ts` files and `.mdx` files — no need to touch React components.
+Available presets:
+```
+blue • green • purple • pink • orange • red • yellow • teal
+```
 
+To modify or add new themes, edit:
+```
+src/config/themePresets.ts
+```
+
+Each theme controls the full color system (accent, hover, borders, backgrounds, etc.).
+
+
+### 🧩 Adding Projects
 ---
-
-## 🧩 **Adding Projects**
 
 Projects are stored here:
 
@@ -109,9 +138,9 @@ Each project takes a typed object (types are optional & documented in `src/types
 }
 ```
 
----
 
-## 📝 **Adding Blog Metadata**
+### 📝 Adding Blog Metadata
+---
 
 Blog cards use metadata from:
 
@@ -131,9 +160,10 @@ Example:
 }
 ```
 
----
 
-## 📚 **Adding Blog Content (MDX)**
+
+### 📚 Adding Blog Content (MDX)
+---
 
 All actual blog post content is stored here:
 
@@ -168,25 +198,21 @@ Your article content here...
 * The filename must match its `slug`
 * Metadata **must match** what you wrote in `blogs.ts`
 
----
 
-# ✉️ Contact Form Setup (Resend API)
+
+## ✉️ **Contact Form Setup (Resend API)**
 
 The contact form sends emails through **Resend**.
 
-### 1. Create a free Resend account
-
-➡ [https://resend.com](https://resend.com)
-
-### 2. Create an API key
-
-### 3. Add an `.env` file:
+ 1. Create a free Resend account
+    - ➡ [https://resend.com](https://resend.com)
+ 2. Create an API key
+ 3. Add an `.env` file:
 
 ```
 RESEND_API_KEY=your_resend_key_here
 ```
-
-### 4. Your route is already set up here:
+ 4. Your route is already set up here:
 
 ```
 src/app/api/contact/route.ts
@@ -194,29 +220,26 @@ src/app/api/contact/route.ts
 
 The form will work automatically once the API key is configured.
 
----
 
-# ☁️ Deployment (Vercel)
 
-### 1️⃣ Commit and push your code to GitHub
+## ☁️ **Deployment (Vercel)**
 
-### 2️⃣ Go to Vercel → "New Project"
+1. Commit and push your code to GitHub
 
-### 3️⃣ Select your GitHub repo
+2. Go to Vercel → "New Project"
 
-### 4️⃣ Add environment variables (important!)
+3. Select your GitHub repo
 
+4. Add environment variables (important!)
 ```
 RESEND_API_KEY=your_resend_key_here
 ```
+5. Deploy
+    - Vercel will automatically handle build, routing, and optimization.
 
-### 5️⃣ Deploy
 
-Vercel will automatically handle build, routing, and optimization.
 
----
-
-# 🗂 Recommended Folder Structure
+## 🗂 **Recommended Folder Structure**
 
 ```
 src/
@@ -235,15 +258,16 @@ src/
  │    ├── projects.ts
  │    └── posts/
  ├── config/
- │    └── siteConfig.ts
+ │    ├── siteConfig.ts
+ │    └── themePresets.ts
  ├── types/
  ├── utils/
  
 ```
 
----
 
-# 🛠 Technologies Used
+
+## 🛠 **Technologies Used**
 
 * **Next.js 15 (App Router)**
 * **React + TypeScript**
@@ -253,24 +277,39 @@ src/
 * **Resend API**
 * **Vercel Deployment**
 
----
 
-# 📄 License
+
+## 📄 **License**
 
 This project is open-source and free for personal or commercial use.
 
 If you use it, ⭐ **please consider giving the repo a star!**
 It helps others discover the template and supports its development.
 
----
 
-# 🤝 Contributing
 
-Pull requests, bug fixes, and feature suggestions are always welcome.
+## 🤝 **Contributing**
 
----
+If you would like to suggest improvements to the original template, you have several options:
 
-# 🙌 Acknowledgements
+### 💡 Feature Suggestions or Bug Reports
+Create a new **Issue** using the Bug Report or Feature Request templates.
+
+### 💬 Discussions
+Join the conversation in the **Discussions** tab to ask questions, share ideas, or request enhancements.
+
+### 🔧 Contribute via Pull Request
+If you'd like to directly contribute to the project:
+1. Read the `CONTRIBUTING.md` file  
+2. Create a new branch  
+3. Submit a pull request  
+
+All contributions are welcome — from small fixes to major improvements!
+
+
+
+
+## 🙌 **Acknowledgements**
 
 Designed and built by **Amelia R. Trevino**.
 Made open-source to help developers build beautiful, production-ready portfolios fast.

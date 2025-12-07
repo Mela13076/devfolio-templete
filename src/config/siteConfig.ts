@@ -10,6 +10,7 @@ export const siteConfig = {
         twitter: "https://twitter.com/username",
     },    
     showDevLogo: false, // Set to true to show a developer logo (</>) with site name, false for just site name
+    siteColorTheme: "teal", // Options: blue, green, purple, pink, orange, red, yellow, teal
 
 
     // ========================= NAVIGATION =========================

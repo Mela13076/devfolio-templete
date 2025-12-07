@@ -2,13 +2,14 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+  /* Color variables are overrided based on the color theme chosen in siteConfig */
   --color-primary: #007AFF;
   --color-secondary: #6B7280;
   --color-dark: #1F2937;
   --color-light: #F9FAFB;
   --color-text: #000000;
-  --color-bg: #ffffff;
-  --color-stroke: #eeeeee;
+  --color-bg: #fffdf9;
+  --color-stroke: #add2fa;
   --color-strokedark: #2d2f40;
 
   --font-sans: 'Inter', sans-serif;
@@ -54,7 +55,7 @@ a {
   .border-primary {
     @apply border border-primary;
   }
-  
+
 } 
 
 @layer base {

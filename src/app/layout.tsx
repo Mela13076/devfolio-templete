@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Lines from "@/components/lines";
 import ScrollToTop from "@/components/ScrollToTop";
 import siteConfig from "@/config/siteConfig";
+import { themes, ThemeName  } from "@/config/themePresets";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const theme = themes[siteConfig.siteColorTheme as ThemeName] || themes.blue;
+
   return (
     <html lang="en">
-    <body className={`min-h-screen flex flex-col bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}>
+    <body 
+      style={
+          {
+            "--color-primary": theme.primary,
+            "--color-secondary": theme.secondary,
+            "--color-dark": theme.dark,
+            "--color-light": theme.light,
+            "--color-text": theme.text,
+            "--color-bg": theme.bg,
+            "--color-stroke": theme.stroke,
+            "--color-strokedark": theme.strokeDark,
+          } as React.CSSProperties
+        }
+      className={`min-h-screen flex flex-col bg-bg transition-colors dark:bg-[#1c1c1c] dark:text-white ${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProviderWrapper>
           <Lines />
           <Navbar />
