@@ -139,9 +139,10 @@ export default function About() {
           initial="initial"
           animate="animate"
         >
-          {siteConfig.about.experience.map((exp) => (
+          {siteConfig.about.experience.map((exp, index) => (
             <motion.div 
             className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+            key={index}
             variants={fadeInUp}
             {...cardHoverSmall}
             >
@@ -182,9 +183,10 @@ export default function About() {
             initial="initial"
             animate="animate"
           >
-            {siteConfig.about.education.map((edu) => (
+            {siteConfig.about.education.map((edu, index) => (
               <motion.div 
               className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+              key={index}
               variants={fadeInUp}
               {...cardHoverSmall}
               >

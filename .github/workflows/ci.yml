@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  # Run on every push to main
+  push:
+    branches: [ main ]
+  # And on every PR targeting main
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Check out your repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2) Set up Node.js (use a modern LTS version)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3) Install dependencies
+      - name: Install dependencies
+        run: npm ci
+        # If npm ci fails because there's no package-lock.json, you can change this to:
+        # run: npm install
+
+      # 4) TypeScript type-check (no output, just checks)
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      # 5) Run ESLint
+      - name: Lint
+        run: npm run lint
+
+      # 6) Build Next.js project
+      - name: Build
+        run: npm run build
