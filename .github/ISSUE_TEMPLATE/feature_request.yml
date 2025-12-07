@@ -29,5 +29,4 @@ body:
     id: additional-context
     attributes:
       label: Additional context
-      description: Add additional context here. For screenshots, drag-and-drop them **after** submitting the issue.
       placeholder: Add notes if helpful.
