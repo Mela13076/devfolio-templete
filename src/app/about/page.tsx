@@ -13,6 +13,9 @@ import {
 import siteConfig from '@/config/siteConfig'
 
 export default function About() {
+  const skillCategories = Object.values(siteConfig.about.skills);
+  const hasSkills = skillCategories.some(category => category.include);
+
   return (
     <div className="container max-w-7xl mx-auto py-12">
       <motion.h1 
@@ -33,94 +36,105 @@ export default function About() {
       </motion.section>
 
       {/* Skills Section */}
-      <motion.section 
-        className="mb-16"
-        {...fadeIn}
-        transition={{ delay: 0.2 }}
-      >
-        <motion.h2 
-          className="section-title"
-          {...fadeInUp}
+      {hasSkills && (
+        <motion.section 
+          className="mb-16"
+          {...fadeIn}
+          transition={{ delay: 0.2 }}
         >
-          Skills
-        </motion.h2>
-        <motion.div 
-          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 "
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          <motion.div 
-            className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
-            variants={fadeInUp}
-            {...cardHover}
+          <motion.h2 
+            className="section-title"
+            {...fadeInUp}
           >
-            <FaLaptopCode className="h-8 w-8 text-primary dark:text-white  mb-4" />
-            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Frontend</h3>
+            Skills
+          </motion.h2>
+          <motion.div 
+            className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 "
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+          >
+            {siteConfig.about.skills.frontend.include && (
+              <motion.div 
+              className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+              variants={fadeInUp}
+              {...cardHover}
+            >
+              <FaLaptopCode className="h-8 w-8 text-primary dark:text-white  mb-4" />
+              <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.frontend.name}</h3>
+              
+              <ul className="text-secondary dark:text-white space-y-2">
+                {siteConfig.about.skills.frontend.skill.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </motion.div>
+            )}
             
-            <ul className="text-secondary dark:text-white space-y-2">
-              {siteConfig.about.skills.frontend.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
+            {siteConfig.about.skills.backend.include && (
+              <motion.div 
+                className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+                variants={fadeInUp}
+                {...cardHover}
+              >
+                <FaDatabase className="h-8 w-8 text-primary dark:text-white mb-4" />
+                <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.backend.name}</h3>
+                <ul className="text-secondary dark:text-white space-y-2">
+                  {siteConfig.about.skills.backend.skill.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+            
+            {siteConfig.about.skills.cloud.include && (
+              <motion.div 
+                className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+                variants={fadeInUp}
+                {...cardHover}
+              >
+                <FaCloud className="h-8 w-8 text-primary dark:text-white mb-4" />
+                <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.cloud.name}</h3>
+                <ul className="text-secondary dark:text-white space-y-2">
+                  {siteConfig.about.skills.cloud.skill.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+            {siteConfig.about.skills.ai_security.include && (
+              <motion.div 
+                className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+                variants={fadeInUp}
+                {...cardHover}
+              >
+                <FaCode className="h-8 w-8 text-primary dark:text-white mb-4" />
+                <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.ai_security.name}</h3>
+                <ul className="text-secondary dark:text-white space-y-2">
+                  {siteConfig.about.skills.ai_security.skill.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+            {siteConfig.about.skills.tools.include && (
+              <motion.div 
+                className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
+                variants={fadeInUp}
+                {...cardHover}
+              >
+                <FaGraduationCap className="h-8 w-8 text-primary dark:text-white mb-4" />
+                <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.tools.name}</h3>
+                <ul className="text-secondary dark:text-white space-y-2">
+                  {siteConfig.about.skills.tools.skill.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
           </motion.div>
-          
-          <motion.div 
-            className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaDatabase className="h-8 w-8 text-primary dark:text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Backend</h3>
-            <ul className="text-secondary dark:text-white space-y-2">
-              {siteConfig.about.skills.backend.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </motion.div>
-          
-          <motion.div 
-            className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaCloud className="h-8 w-8 text-primary dark:text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Cloud & DevOps</h3>
-            <ul className="text-secondary dark:text-white space-y-2">
-              {siteConfig.about.skills.cloud.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div 
-            className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaCode className="h-8 w-8 text-primary dark:text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2 dark:text-primary">AI/ Data Science & Security</h3>
-            <ul className="text-secondary dark:text-white space-y-2">
-              {siteConfig.about.skills.ai_security.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div 
-            className="bg-white dark:bg-dark/95 p-6 rounded-lg shadow-md border-primary"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaGraduationCap className="h-8 w-8 text-primary dark:text-white mb-4" />
-            <h3 className="text-xl font-semibold mb-2 dark:text-primary">Tools & Collaboration</h3>
-            <ul className="text-secondary dark:text-white space-y-2">
-              {siteConfig.about.skills.tools.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
+        </motion.section>
+      )}
       {/* Experience Section */}
       <motion.section 
         className="mb-16"

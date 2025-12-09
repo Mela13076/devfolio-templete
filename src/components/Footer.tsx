@@ -28,30 +28,38 @@ export default function Footer() {
           </div>
           
           <div className="flex space-x-6">
+            {siteConfig.socials.github.show && (
+              <a
+                href={siteConfig.socials.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-primary transition-colors"
+              >
+                <FaGithub className="h-6 w-6" />
+              </a>
+            )}
+
+            {siteConfig.socials.twitter.show && (
+              <a
+                href={siteConfig.socials.twitter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-primary transition-colors"
+              >
+                <FaTwitter className="h-6 w-6" />
+              </a>
+            )}
+            
+            {siteConfig.socials.linkedin.show && (
             <a
-              href={siteConfig.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-primary transition-colors"
-            >
-              <FaGithub className="h-6 w-6" />
-            </a>
-            <a
-              href={siteConfig.socials.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-primary transition-colors"
-            >
-              <FaTwitter className="h-6 w-6" />
-            </a>
-            <a
-              href={siteConfig.socials.linkedin}
+              href={siteConfig.socials.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:text-primary transition-colors"
             >
               <FaLinkedin className="h-6 w-6" />
             </a>
+            )}
           </div>
         </div>
       </div>
