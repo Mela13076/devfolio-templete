@@ -1,3 +1,5 @@
+![Devfolio Banner](./public/banner.svg)
+
 <p align="center">
   <img src="https://img.shields.io/github/license/Mela13076/devfolio-templete" />
   <img src="https://img.shields.io/github/stars/Mela13076/devfolio-templete" />
@@ -6,8 +8,6 @@
   <img src="https://img.shields.io/badge/deploy-vercel-black?logo=vercel" />
   <img src="https://github.com/Mela13076/devfolio-templete/actions/workflows/ci.yml/badge.svg"/>
 </p>
-
-![Devfolio Banner](./public/banner.svg)
 
 
 ## **Devfolio - Developer Portfolio Template (Next.js 15 + MDX + Tailwind)**
@@ -36,11 +36,20 @@ Designed and customized by **Amelia R. Trevino** — now available as an open-so
   `src/config/siteConfig.ts` (`blue`, `green`, `purple`, `pink`, `orange`, `red`, `yellow`, `teal`)
 * **Advanced theme customization** — edit or create new palettes in  
   `src/config/themePresets.ts`
-
 * **Dark & Light mode theme toggle** with customizable color palette
 * **Contact form integrated with Resend API**
 * **Easy to extend, easy to deploy** (free deployment with Vercel)
 * **Clean folder structure** ideal for beginners and scalable for advanced users
+
+---
+## 📘 Documentation
+
+- **Configuration Guide** → [docs/site-config.md](./docs/site-config.md)
+- **Customization Guide** → [docs/customization.md](./docs/customization.md)
+- **Blog Writing Guide** → [docs/blog-mdx-guide.md](./docs/blog-mdx-guide.md) 
+---
+
+
 
 ## 🏁 **Getting Started**
 
@@ -70,15 +79,13 @@ npm install
 ```
 
 Use this if you plan to **fix bugs**, **suggest features**, or **submit PRs**.
-See **CONTRIBUTING.md** for details.
-
-
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
 
 
 ## ⬆️ **Update Your Site Configuration**
-This template uses a **content-driven approach**.
-You only edit simple `.ts` files and `.mdx` files — no need to touch React components.
+>This template uses a **content-driven approach**.
+>You only edit simple `.ts` files and `.mdx` files — no need to touch React components.
 
 All global website settings are stored in:
 
@@ -87,7 +94,6 @@ src/config/siteConfig.ts
 ```
 
 You can edit:
-
 * name & tagline
 * social links
 * navigation menu
@@ -99,10 +105,11 @@ The website will automatically update everywhere after modifying this file.
 ### 🎨 **Customization — Theme Presets & Colors**
 ---
 
-This template includes 8 customizable **theme presets** you can switch between in:
+This template includes 8 customizable **theme presets** you can switch between in `src/config/siteConfig.ts`:
 ```
-src/config/siteConfig.ts
+siteColorTheme: "teal"
 ```
+
 
 Available presets:
 ```
@@ -202,6 +209,8 @@ Your article content here...
 
 ## ✉️ **Contact Form Setup (Resend API)**
 
+>**Contact form is optional to use**
+
 The contact form sends emails through **Resend**.
 
  1. Create a free Resend account
@@ -212,11 +221,19 @@ The contact form sends emails through **Resend**.
 ```
 RESEND_API_KEY=your_resend_key_here
 ```
+ 4. Configure your Resend data in `src/config/siteConfig.ts`
+```
+resend: {
+        fromEmail: "", 
+        toEmail: "",
+    },
+```
  4. Your route is already set up here:
 
 ```
 src/app/api/contact/route.ts
 ```
+* no changes needed in this file
 
 The form will work automatically once the API key is configured.
 
@@ -230,7 +247,7 @@ The form will work automatically once the API key is configured.
 
 3. Select your GitHub repo
 
-4. Add environment variables (important!)
+4. Add environment variables if using Contact Form (important!) 
 ```
 RESEND_API_KEY=your_resend_key_here
 ```
@@ -281,6 +298,8 @@ src/
 
 ## 📄 **License**
 
+[MIT Licence](./LICENSE)
+
 This project is open-source and free for personal or commercial use.
 
 If you use it, ⭐ **please consider giving the repo a star!**
@@ -300,13 +319,11 @@ Join the conversation in the **Discussions** tab to ask questions, share ideas, 
 
 ### 🔧 Contribute via Pull Request
 If you'd like to directly contribute to the project:
-1. Read the `CONTRIBUTING.md` file  
+1. Read the [`CONTRIBUTING.md`](./CONTRIBUTING.md) file  
 2. Create a new branch  
 3. Submit a pull request  
 
 All contributions are welcome — from small fixes to major improvements!
-
-
 
 
 ## 🙌 **Acknowledgements**

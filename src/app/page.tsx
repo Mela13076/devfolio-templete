@@ -2,6 +2,7 @@ import Blogs from "@/components/Blogs";
 import Hero from "@/components/Hero";
 // import Newsletter from "@/components/Newsletter";
 import ProjectSection from "@/components/ProjectSection";
+import siteConfig from "@/config/siteConfig";
 
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
     <main>
       <Hero />
       <ProjectSection />
-      <Blogs />
+      {siteConfig.blogs.include && <Blogs />}
       {/* <Newsletter /> */}
     </main>
   );

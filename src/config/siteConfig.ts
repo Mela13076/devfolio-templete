@@ -1,14 +1,30 @@
+
+//If you want to include blogs on your site, set showBlogs to true, otherwise set to false
+// If you set to true, make sure to create your blogs at contents/blogs.ts and your mdx files in contents/posts/
+const showBlogs = true;
+
 export const siteConfig = {
+    // ========================= Global Settings =========================
     siteName: "Devfolio",
     name: "Your Name Here",
     metadataTitle: "Developer Portfolio Template",
     siteDescription:
         "A modern, customizable developer portfolio template built with Next.js, Tailwind CSS, and MDX.",
+     
     socials: {
-        github: "https://github.com/username",
-        linkedin: "https://linkedin.com/in/username",
-        twitter: "https://twitter.com/username",
-    },    
+        github: {
+            show: true,
+            url: "https://github.com/username",
+        },
+        linkedin: {
+            show: true,
+            url: "https://linkedin.com/in/username",
+        },
+        twitter: {
+            show: true,
+            url: "https://twitter.com/username",
+        }
+    },
     showDevLogo: false, // Set to true to show a developer logo (</>) with site name, false for just site name
     siteColorTheme: "teal", // Options: blue, green, purple, pink, orange, red, yellow, teal
 
@@ -18,7 +34,9 @@ export const siteConfig = {
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
         { label: "Projects", href: "/projects" },
-        { label: "Blogs", href: "/blogs" },
+        ...(showBlogs ? [
+            { label: "Blogs", href: "/blogs" }
+        ] : []),
         { label: "Contact", href: "/contact" },
     ],
 
@@ -28,8 +46,16 @@ export const siteConfig = {
         subtitle:
         "Software Engineer | Full Stack Developer | Empowering the Next Generation of Coders",
         profileImage: "/profile.jpg",
-        ctaPrimary: "View Projects",
-        ctaSecondary: "Contact Me",
+        ctaPrimary: {
+            include: true,
+            label: "View Projects",
+            href: "/projects",
+        },
+        ctaSecondary: {
+            include: true,
+            label: "Contact Me",
+            href: "/contact",
+        },
     },
 
     // ========================= ABOUT PAGE CONFIG =========================
@@ -37,33 +63,53 @@ export const siteConfig = {
         bio: `I'm a passionate Full Stack Developer and mentor who loves building secure, scalable systems and helping others grow in tech.`,
 
         skills: {
-        frontend: [
-            "React / Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "HTML / CSS",
-            "Redux",
-            "Framer Motion",
-            "Figma",
-        ],
-        backend: [
-            "Node.js",
-            "Express",
-            "PostgreSQL",
-            "MongoDB",
-            "Django",
-            "REST APIs",
-            "JWT Auth",
-            "Socket.IO",
-        ],
-        cloud: ["Azure", "AWS", "CI/CD Pipelines", "Cloudinary"],
-        ai_security: [
-            "Python",
-            "NumPy/Pandas",
-            "Cybersecurity Fundamentals",
-            "ML / Data Mining",
-        ],
-        tools: ["Git/GitHub", "VS Code", "Postman", "Notion/Trello/Asana", "Agile"],
+            frontend: {
+                name: "Frontend",
+                include: true,
+                skill:[
+                    "React / Next.js",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "HTML / CSS",
+                    "Redux",
+                    "Framer Motion",
+                    "Figma",
+                ]
+            },
+            backend: {
+                name: "Backend",
+                include: true,
+                skill:[
+                    "Node.js",
+                    "Express",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Django",
+                    "REST APIs",
+                    "JWT Auth",
+                    "Socket.IO",
+                ],
+            },
+            cloud: {
+                name: "Cloud & DevOps",
+                include: true,
+                skill: ["Azure", "AWS", "CI/CD Pipelines", "Cloudinary"]
+            },
+            ai_security: {
+                name: "AI/ Data Science & Security",
+                include: true,
+                skill:[
+                    "Python",
+                    "NumPy/Pandas",
+                    "Cybersecurity Fundamentals",
+                    "ML / Data Mining",
+                ],
+            },
+            tools: {
+                name: "Tools & Collaboration",
+                include: true,
+                skill: ["Git/GitHub", "VS Code", "Postman", "Notion/Trello/Asana", "Agile"],
+            },
         },
 
         experience: [
@@ -106,6 +152,14 @@ export const siteConfig = {
         ]
     },
 
+    // ========================= Blogs PAGE CONFIG =========================
+    // if you want to include a blogs on your site, set showBlogs to true (found on top), otherwise set to false
+    
+    blogs: {
+        include: showBlogs, //Don't change this line
+        description: "Read my latest articles on web development, programming tips, and tech trends.",
+    },
+
     // ========================= CONTACT PAGE CONFIG =========================
     contact: {
         header: "Contact Me",
@@ -114,6 +168,7 @@ export const siteConfig = {
         email: "example@example.com",
         phone: "+1 (123) 456-7890",
         location: "Remote",
+        includeForm: true, // Set to true to include contact form, false to hide
     },
 
     // ========================= Resend CONFIG =========================

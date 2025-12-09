@@ -1,11 +1,16 @@
 'use client'
 
 import { blogs } from '@/contents/blogs'
+import { notFound } from 'next/navigation'
 import  BlogCard  from '@/components/BlogCard'
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeInUp } from '@/utils/animations'
+import siteConfig from '@/config/siteConfig'
 
 export default function Blogs() {
+  if (!siteConfig.blogs.include) {
+    notFound()
+  }
   return (
     <div className="container max-w-7xl mx-auto py-12">
       <motion.h1 
@@ -22,11 +27,7 @@ export default function Blogs() {
               {...fadeInUp}
             >
               <p className="text-lg text-secondary max-w-3xl mx-auto text-center">
-                This blog is a space where I document my technical journey — the projects I build, 
-                the challenges I face, and the lessons I learn from teaching others. Whether it’s 
-                cloud architecture, full-stack design, or reflections on mentoring and leadership, 
-                these posts are meant to inspire, educate, and give a behind-the-scenes look at my 
-                work as a developer.
+                {siteConfig.blogs.description}
               </p>
             </motion.section>
       

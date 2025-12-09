@@ -44,65 +44,79 @@ export default function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.5 }}
           >
-            <motion.a
-              href={siteConfig.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaGithub />
-            </motion.a>
-            <motion.a
-              href={siteConfig.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaLinkedin />
-            </motion.a>
-            <motion.a
-              href={siteConfig.socials.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaTwitter /> 
-            </motion.a>
-          </motion.div>
-          <motion.div 
-            className="flex flex-col md:flex-row justify-center gap-4"
-            {...fadeInUp}
-            transition={{ delay: 0.6 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/projects"
-                className="bg-primary inline-block w-full md:w-auto text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+            {siteConfig.socials.github.show && (
+              <motion.a
+                href={siteConfig.socials.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                {siteConfig.hero.ctaPrimary}
-              </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/contact"
-                className=" inline-block w-full bg-gray-500  md:w-auto text-white  px-8 py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                <FaGithub />
+              </motion.a>
+            )}
+            {siteConfig.socials.linkedin.show && (
+              <motion.a
+                href={siteConfig.socials.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                {siteConfig.hero.ctaSecondary}
-              </Link>
-            </motion.div>
+                <FaLinkedin />
+              </motion.a>
+            )}
+            {siteConfig.socials.twitter.show && (
+              <motion.a
+                href={siteConfig.socials.twitter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <FaTwitter /> 
+              </motion.a>
+            )}
+            
           </motion.div>
+          {(siteConfig.hero.ctaPrimary.include || siteConfig.hero.ctaSecondary.include) && (
+            <motion.div 
+              className="flex flex-col md:flex-row justify-center gap-4"
+              {...fadeInUp}
+              transition={{ delay: 0.6 }}
+            >
+              {siteConfig.hero.ctaPrimary.include && (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    href={siteConfig.hero.ctaPrimary.href}
+                    className="bg-primary inline-block w-full md:w-auto text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    {siteConfig.hero.ctaPrimary.label}
+                  </Link>
+                </motion.div>
+              )}
+              { siteConfig.hero.ctaSecondary.include && (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    href={siteConfig.hero.ctaSecondary.href}
+                    className=" inline-block w-full bg-gray-500  md:w-auto text-white  px-8 py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                  >
+                    {siteConfig.hero.ctaSecondary.label}
+                  </Link>
+                </motion.div>
+              )}
+              
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
