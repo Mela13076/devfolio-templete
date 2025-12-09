@@ -3,10 +3,12 @@ name: CI
 on:
   # Run on every push to main
   push:
-    branches: [ main ]
-  # And on every PR targeting main
+    branches:
+      - main
+      - "feature/**"   # Run CI on any feature branch
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build-and-test:
