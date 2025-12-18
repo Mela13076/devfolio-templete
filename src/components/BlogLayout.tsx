@@ -5,7 +5,6 @@ import siteConfig from "@/config/siteConfig";
 export default function BlogLayout({ data, children }:  {data: BlogLayoutProps, children: React.ReactNode}) {
   const { title, date, tags, readTime, lastUpdated } = data;
 
-
   return (
     <div className="prose dark:prose-invert container max-w-7xl mx-auto px-4 mb-8">
           <article className="dark:bg-dark/80 rounded-lg shadow-md p-6  border-primary border">

@@ -16,6 +16,16 @@ export interface Blog {
   tags?: string[];
 }
 
+export interface BlogMeta {
+  title: string;
+  summary: string;
+  date: string;
+  readTime?: string;
+  tags?: string[];
+  slug: string;
+  lastUpdated?: string;
+}
+
 export interface BlogLayoutProps {
     title: string;
     date: string;
