@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
-import { Blog } from "@/types";
+import { BlogMetadata } from "@/types";
 import { fadeInUp, cardHoverSmall } from '@/utils/animations'
 import Link from "next/link";
 
 
-export default function BlogCard ({ title, summary, date, readTime, slug, tags }: Blog) {
+export default function BlogCard ({ title, summary, date, readTime, slug, tags }: BlogMetadata) {
   return (
     <motion.article
         key={slug}
@@ -62,13 +62,16 @@ export default function BlogCard ({ title, summary, date, readTime, slug, tags }
                 <FaCalendarAlt className="mr-2" />
                 {new Date(date).toLocaleDateString()}
             </motion.span>
-            <motion.span 
+            {readTime &&(
+              <motion.span 
                 className="flex items-center"
                 whileHover={{ scale: 1.05 }}
-            >
+              >
                 <FaClock className="mr-2" />
                 {readTime}
-            </motion.span>
+              </motion.span>
+            )}
+            
         </motion.div>
         
     </motion.article>

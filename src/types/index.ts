@@ -16,7 +16,7 @@ export interface Blog {
   tags?: string[];
 }
 
-export interface BlogMeta {
+export interface BlogMetadata {
   title: string;
   summary: string;
   date: string;

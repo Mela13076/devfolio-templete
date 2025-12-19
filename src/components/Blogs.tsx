@@ -1,12 +1,13 @@
 'use client'
 
-import { blogs } from '@/contents/blogs';
+//import { blogs } from '@/contents/blogs';
 import  BlogCard  from './BlogCard';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { BlogMetadata } from '@/types';
 
-export default function Blogs() {
+export default function Blogs({ blogs }: { blogs: BlogMetadata[] }) {
   return (
     <section className="py-20">
       <div className="container max-w-7xl mx-auto px-8">

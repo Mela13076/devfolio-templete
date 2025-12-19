@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { BlogMeta } from '@/types';
+import { BlogMetadata } from '@/types';
+import { validateBlogMetadata } from './validateBlogMeta';
 
 interface BlogPost {
-    metadata: BlogMeta;
+    metadata: BlogMetadata;
     content: string;
 }
 
@@ -14,11 +15,14 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
     if (!fs.existsSync(filePath)) return null;
 
     const fileContent = await fs.promises.readFile(filePath, 'utf8')
-    const { content, data } = matter(fileContent);
     //data is the metadata of the blog post & content is the actual mdx content
+    const { content, data } = matter(fileContent);
+    console.log(data);
+    // validate the metadata
+    validateBlogMetadata(data, slug);
 
     return {
-        metadata: data as BlogMeta,
+        metadata: data as BlogMetadata,
         content
     };
 }
