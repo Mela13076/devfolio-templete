@@ -7,16 +7,16 @@ import { validateBlogMetadata } from './validateBlogMeta';
 
 export async function getAllBlogs(): Promise<BlogMetadata[]> { 
     // Construct the path to the posts directory 
-    const postsDirectory = path.join(process.cwd(), 'src/contents/posts');
+    const blogsDirectory = path.join(process.cwd(), 'src/contents/blogs');
 
     // Read all file names in the posts directory and filter out non-mdx files
-    const fileNames = fs.readdirSync(postsDirectory).filter(fileName => fileName.endsWith('.mdx'));
+    const fileNames = fs.readdirSync(blogsDirectory).filter(fileName => fileName.endsWith('.mdx'));
     const allBlogs: BlogMetadata[] = [];
 
     // Read each file and extract the metadata
     for (const fileName of fileNames) {
         // Construct the full path to the file
-        const filePath = path.join(postsDirectory, fileName);
+        const filePath = path.join(blogsDirectory, fileName);
         // Read the file content
         const fileContent = await fs.promises.readFile(filePath, 'utf8')
         //data is the metadata of the blog post & content is the actual mdx content

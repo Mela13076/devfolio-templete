@@ -1,6 +1,5 @@
 'use client'
 
-//import { blogs } from '@/contents/blogs';
 import  BlogCard  from './BlogCard';
 import Link from 'next/link';
 import { motion } from 'framer-motion';

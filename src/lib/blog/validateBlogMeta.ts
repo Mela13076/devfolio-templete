@@ -33,7 +33,7 @@ export function validateBlogMetadata(metadata: unknown, filename: string): asser
 
     if (errors.length > 0) {
     throw new Error(
-      `Invalid blog frontmatter in "${filename}":\n` +
+      `Invalid blog metadata in src/contents/blogs/${filename}.mdx:\n` +
         errors.map(err => `- ${err}`).join('\n')
     );
   }

@@ -1,6 +1,6 @@
 
 //If you want to include blogs on your site, set showBlogs to true, otherwise set to false
-// If you set to true, make sure to create your blogs at contents/blogs.ts and your mdx files in contents/posts/
+// If you set to true, make sure to create your blog mdx files in contents/blogs/
 const showBlogs = true;
 
 export const siteConfig = {
@@ -26,7 +26,7 @@ export const siteConfig = {
         }
     },
     showDevLogo: false, // Set to true to show a developer logo (</>) with site name, false for just site name
-    siteColorTheme: "teal", // Options: blue, green, purple, pink, orange, red, yellow, teal
+    siteColorTheme: "blue", // Options: blue, green, purple, pink, orange, red, yellow, teal
 
 
     // ========================= NAVIGATION =========================

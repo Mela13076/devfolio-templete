@@ -10,7 +10,7 @@ interface BlogPost {
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> { 
-    const filePath = path.join(process.cwd(), 'src/contents/posts', `${slug}.mdx`)
+    const filePath = path.join(process.cwd(), 'src/contents/blogs', `${slug}.mdx`)
       
     if (!fs.existsSync(filePath)) return null;
 

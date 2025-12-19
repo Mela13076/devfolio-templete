@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation'
 import  BlogCard  from '@/components/BlogCard'
 import { motion } from 'framer-motion'
-import { staggerContainer, fadeInUp } from '@/utils/animations'
+import { staggerContainer} from '@/utils/animations'
 import siteConfig from '@/config/siteConfig'
 import { BlogMetadata } from '@/types'
 
