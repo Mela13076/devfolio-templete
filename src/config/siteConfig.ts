@@ -26,7 +26,7 @@ export const siteConfig = {
         }
     },
     showDevLogo: false, // Set to true to show a developer logo (</>) with site name, false for just site name
-    siteColorTheme: "blue", // Options: blue, green, purple, pink, orange, red, yellow, teal
+    siteColorTheme: "teal", // Options: blue, green, purple, pink, orange, red, yellow, teal
 
 
     // ========================= NAVIGATION =========================

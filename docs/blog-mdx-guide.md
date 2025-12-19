@@ -1,257 +1,255 @@
 # ✍️ Blog MDX Writing Guide
 
-This guide explains how to write blog posts using **MDX**, how to add them to your site, required metadata, optional fields, and examples.
+This guide explains how to write blog posts using **MDX**, how they are added to your site, required metadata, optional fields, and common patterns.
 
-MDX allows you to write Markdown **with the full power of React components**, making blog posts flexible and interactive.
+Devfolio uses **MDX as the single source of truth** for all blog content.  
+There is no separate blog configuration file to maintain.
 
----
+MDX lets you write Markdown **with full React component support**, making blog posts flexible, expressive, and interactive.
 
-# 🚀 Before You Begin
 
-If blogs are enabled in your site configuration file `src/config/siteConfig.ts`:
+
+## 🚀 Before You Begin
+
+Make sure blogs are enabled in your site configuration:
 
 ```ts
-const showBlogs = true;
+// src/config/siteConfig.ts
+showBlogs: {
+  include: true,
+}
 ```
 
-Then you must:
+When blogs are enabled, Devfolio will automatically generate:
 
-1. **Create MDX files** in
+* The Blogs page
+* Blog cards
+* Individual blog routes
 
-   ```
-   src/contents/posts/
-   ```
+No additional setup is required.
 
-2. **Add the post entry** to
 
-   ```
-   src/contents/blogs.ts
-   ```
 
-If you do **not** complete both of these steps:
+## 📂 File Structure
 
-* The blog page will exist but it will appear **empty** and clicking a blog card may lead to a 404 if the MDX file is missing
-
----
-
-# 📂 File Structure
-
-Your blog content must follow this structure:
-
-* src/contents/blogs.ts is for all blog metadata for cards
+All blog content lives inside the `blogs` directory:
 
 ```
 src/
   contents/
-    blogs.ts          ← All blog metadata 
-    posts/
+    blogs/
       my-first-post.mdx
       another-post.mdx
       ...
 ```
 
----
+Each blog post must be a **single `.mdx` file**.
 
-# 📝 Step 1 — Add Blog Metadata in `blogs.ts`
+The **filename defines the blog slug** and route.
 
-Each post displayed on your blog page and homepage starts here.
-
-```ts
-export const blogs: Blog[] = [
-  {
-    title: "My First Blog Post",
-    summary: "A short preview of the post.",
-    date: "2025-01-01",
-    readTime: "6 min read",   // optional
-    slug: "my-first-post",
-    tags: ["Next.js", "Career"], // optional
-  },
-];
-```
-
-### ⚠️ **Slug must match the MDX filename**
-
-If `slug: "my-first-post"` → the file must be named:
+Example:
 
 ```
-my-first-post.mdx
+src/contents/blogs/my-first-post.mdx
 ```
 
-No exceptions — this is how the router finds your file.
-
----
-
-# ✍️ Step 2 — Create the MDX File
-
-Inside:
+➡ This post will be available at:
 
 ```
-src/contents/posts/
+/blogs/my-first-post
 ```
 
-Create a file with the **same slug name**:
 
-```
-my-first-post.mdx
-```
 
----
+## 🏷 Frontmatter Metadata
 
-# 🏷 Step 3 — Add Metadata to the MDX File
+Each MDX file must start with a frontmatter block.
 
-Every MDX file requires a metadata block at the top:
+### Required fields
+
+* `title` – string
+* `summary` – string (used for blog cards)
+* `date` – string (ISO format recommended)
+
+### Optional fields
+
+* `tags` – string[]
+* `readTime` – string
+* `lastUpdated` – string
+
+
+
+### Example frontmatter
 
 ```mdx
 ---
 title: "My First Blog Post"
 summary: "A short preview of the post."
 date: "2025-01-01"
-readTime: "6 min read"   # optional
-tags: ["Next.js", "Career"]   # optional
-lastUpdated: "2025-01-05"   # optional
-slug: "my-first-post"  # optional inside MDX
+tags: ["Next.js", "Career"]
+readTime: "6 min read"
+lastUpdated: "2025-01-05"
 ---
 ```
 
-### Required Fields
+🔹 **Important notes**
 
-✔ `title`
-✔ `date`
-✔ `summary`
+* The `slug` is **automatically derived from the filename**
+* Do **not** define a blog list or slug anywhere else
+* Frontmatter is validated at build time
 
-### Optional Fields
 
-| Field         | Behavior                                        |
-| ------------- | ----------------------------------------------- |
-| `readTime`    | Shows reading time on the card + article header |
-| `tags`        | Shows tag badges on card + post page            |
-| `lastUpdated` | Displays an “Updated on…” notice below the date |
-| `slug`        | Safe to leave out unless you want redundancy    |
 
-If removed, the UI adjusts automatically.
+## ✍️ Writing Blog Content
 
----
-
-# 🧠 Step 4 — Write MDX Content
-
-After the metadata block, you can write standard Markdown:
+After the frontmatter block, you can write standard Markdown:
 
 ```mdx
 # Welcome to My First Blog Post
 
-This is a simple post written in **MDX**.
+This post is written using **MDX**.
 
-- It supports lists  
-- Inline code like `console.log`  
-- Code blocks  
-- Images  
+- Markdown works as expected
+- Inline code like `console.log()` is supported
+- Code blocks, lists, and headings all work
 ```
 
----
 
-# ⚛️ Step 5 — Use React Components Inside MDX
 
-You can import and use React components directly:
+## ⚛️ Using React Components in MDX
+
+MDX allows you to import and use React components directly inside your blog posts.
+
+Example:
 
 ```mdx
 import Alert from "@/components/ui/Alert";
 
 <Alert type="info">
-  This is a live React component inside an MDX blog post!
+  This is a live React component inside an MDX blog post.
 </Alert>
 ```
 
-You can also embed:
+You can embed:
 
 * Custom components
-* Diagrams
 * Interactive elements
-* Tailwind-styled blocks
+* Diagrams
+* Styled UI blocks
 
----
+This makes blog posts far more expressive than plain Markdown.
 
-# 🖼 Adding Images in MDX
 
-Place images inside:
+
+## 🖼 Adding Images
+
+Place images inside the `public/posts` directory:
 
 ```
 public/posts/
 ```
 
-Then reference them like:
+Then reference them in MDX:
 
 ```mdx
-![My Screenshot](/posts/my-image.png)
+![Screenshot](/posts/my-image.png)
 ```
-or 
+
+Or with a custom `<img />` element:
 
 ```mdx
-<img src="/posts/my-image.png" alt="JavaScript code example" className="my-8 rounded-lg shadow-md w-md mx-auto" />
+<img
+  src="/posts/my-image.png"
+  alt="JavaScript code example"
+  className="my-8 rounded-lg shadow-md mx-auto"
+/>
 ```
 
+
+
+## ⭐ Featured Blogs on the Home Page
+
+The homepage automatically displays the **most recent blog posts**.
+
+Featured blogs are determined by:
+
+* Publish date
+* File ordering and metadata
+
+To change which blogs appear first:
+
+* Update the `date` field
+* Add newer posts
+* Rename or reorganize files if needed
+
+No manual “featured” flag is required.
+
+
+
+## 🧪 Metadata Validation
+
+Devfolio validates blog frontmatter automatically.
+
+If required fields are missing or invalid, the build will fail with a clear error message explaining:
+
+* Which file is affected
+* Which fields are missing or incorrect
+* How to fix the issue
+
+This prevents silent errors and keeps blog content consistent.
+
+
+
+## 🔍 Common Mistakes & Fixes
+
+| Issue                           | Fix                                            |
+| ------------------------------- | ---------------------------------------------- |
+| Blog page is empty              | No `.mdx` files exist in `src/contents/blogs/` |
+| Visiting a blog route shows 404 | Filename does not match expected slug          |
+| Build fails with metadata error | Frontmatter is missing required fields         |
+| Tags not showing                | Ensure `tags` is an array of strings           |
+| Blog order seems incorrect      | Check the `date` field values                  |
+
 ---
 
-# ⭐ Featured Blogs on Home Page
-
-The **first items** in `blogs.ts` appear on the homepage.
-
-If you want a post featured:
-
-1. Move it to the **top** of the array found in `src/contents/blogs.ts` 
-2. Keep the slug + MDX file the same
-
----
-
-# 🔍 Common Mistakes + Fixes
-
-| Issue                                  | Fix                                   |
-| -------------------------------------- | ------------------------------------- |
-| Blog card shows but clicking gives 404 | MDX filename does not match slug      |
-| Blog page is blank                     | Did not add entries to `blogs.ts`     |
-| Featured blogs wrong                   | Reorder the array                     |
-| Tags not showing                       | Remove `tags` or ensure it's an array |
-| Metadata errors                        | MDX frontmatter must use valid YAML   |
-
----
-
-# 🎉 Example of a Complete MDX File
+## 🎉 Example Complete MDX File
 
 ```mdx
 ---
 title: "How I Built My Portfolio Template"
-summary: "A behind-the-scenes look at the design, code, and decisions behind this template."
+summary: "A behind-the-scenes look at the design and architecture decisions."
 date: "2025-02-01"
 readTime: "8 min read"
-tags: ["Next.js", "Design", "Progress"]
+tags: ["Next.js", "Design", "Architecture"]
 lastUpdated: "2025-02-10"
-slug: "building-my-template"
 ---
 
 # How I Built My Portfolio Template
 
-Welcome to the full breakdown of how this portfolio template was created...
+This post walks through how Devfolio was designed and built.
 
-import Alert from "@/components/Alert";
+import Alert from "@/components/ui/Alert";
 
 <Alert type="success">
-  You can embed React components inside MDX like this!
+  You can embed React components directly inside MDX.
 </Alert>
 
 More content here...
 ```
 
----
 
-# 🎯 Final Notes
 
-Once you’ve:
+## 🎯 Final Notes
 
-✔ Added the entry to `blogs.ts`
-✔ Created the matching MDX file
+Once you:
 
-The blog is fully ready and will display automatically on:
+* Add a valid `.mdx` file to `src/contents/blogs`
+* Include the required frontmatter fields
 
-* The Blogs Page
-* The Homepage (if featured)
-* Its own dedicated reading page
+Your blog post will automatically appear on:
 
+* The Blogs page
+* The Home page (if recent)
+* Its own dedicated route
+
+No additional configuration is needed.

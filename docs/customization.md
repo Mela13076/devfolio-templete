@@ -24,141 +24,147 @@ If `showBlogs = false` →
 
 
 
-## 1. `src/contents/blogs.ts` – Blog Listing Configuration
+## Blog Architecture Overview
 
-This file defines all blog posts that appear on the **Blogs page** and the **homepage featured blogs**.
+Devfolio uses **MDX files as the single source of truth** for blog content.
 
-```ts
-import { Blog } from "@/types";
+There is **no manual blog list** or configuration file to maintain.
 
-export const blogs: Blog[] = [
-  {
-    title: "My First Blog Post",
-    summary: "A short preview of the post.",
-    date: "2025-01-01",
-    readTime: "6 min read",
-    slug: "my-first-post",
-    tags: ["Next.js", "Career", "Education"],
-  },
-];
+* Blog metadata is read directly from MDX frontmatter
+* Blog cards and pages are generated automatically
+* Invalid or missing metadata will throw a helpful build-time error
+
+
+
+### 1. `src/contents/blogs/` – Blog Content (MDX)
+
+All blog posts live inside:
+
+```
+src/contents/blogs/
 ```
 
-### 🔍 What each field does
+Each blog post must be a **single `.mdx` file**.
 
-| Field      | Purpose                                        |
-| ---------- | ---------------------------------------------- |
-| `title`    | Display title of the blog card                 |
-| `summary`  | Short preview text shown on the card           |
-| `date`     | Published date (also shown on the card)        |
-| `readTime` | Estimated reading time                         |
-| `slug`     | **Must match the MDX filename**                |
-| `tags`     | Tags displayed on the card and inside the blog |
-
-### ⭐ Featured Blogs on Home Page
-
-The **first 2–3 blogs** in this array are treated as featured items and appear on the homepage.
-
-➡ **Put your favorite or newest blogs at the top.**
-
-### **Optional Field: Tags**
-
-The `tags` field in `blogs.ts` is **optional**.
-If you don’t want to include tags for a post, simply remove the field:
-
-```ts
-{
-  title: "My First Blog Post",
-  summary: "A short preview...",
-  date: "2025-01-01",
-  readTime: "6 min read",
-  slug: "my-first-post"
-}
-```
-
-If `tags` is missing:
-
-* No tags will be displayed on the blog card
-
-
-## 2. `src/contents/posts/` – Your MDX Blog Files
-
-🚨 **Blog Writing Guide** → [docs/blog-mdx-guide.md](./docs/blog-mdx-guide.md) 
-
-Every blog post requires an `.mdx` file inside `src/contents/posts`.
-
-### ⚠️ Important Rule
-
-**The MDX filename must match the slug in `blogs.ts`.**
+The **filename becomes the blog slug**.
 
 Example:
 
-* slug: `"my-first-post"`
-* MDX file: `src/contents/posts/my-first-post.mdx`
+```
+src/contents/blogs/my-first-post.mdx
+```
 
-### 🏷 Required Metadata
+---
 
-At the top of each MDX file you must include the metadata for title, date, readTime, and tags:
+### Frontmatter Metadata
+
+Each MDX file must include frontmatter metadata at the top.
+
+**Required fields** 
+* `title` – string
+* `summary` – string (used for blog cards)
+* `date` – string (ISO format recommended)
+
+**Optional fields**
+
+* `tags` – string[]
+* `readTime` – string
+* `lastUpdated` – string
+
+### Example
 
 ```mdx
 ---
 title: "My First Blog Post"
+summary: "A short preview of the post."
 date: "2025-01-01"
-readTime: "6 min read"
 tags: ["Next.js", "Career", "Education"]
+readTime: "6 min read"
+lastUpdated: "2025-05-01"
 ---
+
+# My First Blog Post
+
+Your article content goes here.
 ```
 
-These **must match** the values in `blogs.ts` so the UI stays consistent.
 
-### ✨ MDX Supports React Components
 
-You can import and use React components inside the MDX file:
+### 🔍 How metadata is used
+
+| Field         | Purpose                                       |
+| ------------- | --------------------------------------------- |
+| `title`       | Display title on blog cards and blog page     |
+| `summary`     | Short preview shown on blog cards             |
+| `date`        | Published date (used for sorting and display) |
+| `tags`        | Optional tags shown on cards and post pages   |
+| `readTime`    | Optional reading-time badge                   |
+| `lastUpdated` | Optional “Updated on…” label                  |
+| `slug`        | Automatically derived from the filename       |
+
+
+
+## ⭐ Featured Blogs on the Home Page
+
+The homepage automatically displays the **most recent blog posts**.
+
+You do **not** need to manually mark featured blogs.
+
+To control which blogs appear first:
+
+* Rename files
+* Adjust publish dates
+* The system sorts posts by date automatically
+
+
+
+## ⚠️ Important Rules
+
+* Every blog must have its own `.mdx` file
+* Filenames must be unique
+* The filename **defines the slug**
+* Do not manually define a blog list anywhere else
+* Frontmatter is validated at build time
+
+
+
+## ✨ MDX Supports React Components
+
+MDX allows you to mix Markdown and React components.
+
+Example:
 
 ```mdx
 import Alert from "@/components/Alert";
 
-<Alert type="info">This is an MDX component!</Alert>
+<Alert type="info">
+  This is an MDX-powered component.
+</Alert>
 ```
 
-This allows you to create rich, interactive blog posts.
+This makes it easy to create rich, interactive blog posts.
 
-### 📝 **Optional Metadata Fields**
 
-The blog layout supports several **optional fields**.
-If you choose not to use them, you can safely remove the fields from the metadata block.
 
-| Field         | Optional?         | Purpose                                                                | Behavior if removed                              |
-| ------------- | ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------ |
-| `readTime`    | ✔ Optional        | Displays estimated reading time on the blog card & post page           | No read-time badge will appear                   |
-| `tags`        | ✔ Optional        | Categorizes the post using tag chips                                   | No tags will be shown                            |
-| `lastUpdated` | ✔ Optional        | Shows “Updated on …” under the original publish date                   | No update label is shown                         |
-| `slug`        | ✔ Optional in MDX | Used automatically by the system—slug is pulled mainly from `blogs.ts` | Safe to omit unless you want additional metadata |
+## 🧪 Metadata Validation
 
-### Example with optional fields included:
+Devfolio validates blog frontmatter automatically.
 
-```mdx
----
-title: "Understanding Next.js Routing"
-date: "2025-02-04"
-slug: "nextjs-routing"
-readTime: "7 min read"
-tags: ["Next.js", "Routing", "React"]
-lastUpdated: "2025-02-10"
----
-```
+If required fields are missing or invalid, the build will fail with a clear error explaining:
 
-### Example with optional fields removed:
+* Which file is invalid
+* Which fields are missing or incorrect
+* How to fix the issue
 
-```mdx
----
-title: "My Minimal Blog Post"
-date: "2025-03-01"
-slug: "minimal-post"
----
-```
+This prevents silent UI issues and keeps blog content consistent.
 
-The UI will still render perfectly as everything automatically adjusts.
 
+
+## 🚨 Blog Writing Guide
+
+For more details on writing MDX content, see:
+
+➡ **Blog Writing Guide** → `docs/blog-mdx-guide.md`
 
 # 💻 Projects
 
@@ -166,7 +172,7 @@ All projects shown on the **Projects page** and **homepage featured section** co
 
 `src/contents/projects.ts`
 
----
+
 
 ## 1. `src/contents/projects.ts` – Project Listing Configuration
 
@@ -228,7 +234,7 @@ If you do not need them, you may safely **remove the field entirely** from the o
 
 This will still render correctly
 
----
+
 
 # ✉️ Contact Form Setup (Resend API)
 
@@ -261,7 +267,7 @@ src/
       another-post.mdx
 ```
 
----
+
 
 # ⚠️ Common Mistakes to Avoid
 

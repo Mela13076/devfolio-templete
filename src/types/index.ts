@@ -7,15 +7,6 @@ export interface Project {
   image?: string;
 }
 
-export interface Blog {
-  title: string;
-  summary: string;
-  date: string;
-  readTime: string;
-  slug: string;
-  tags?: string[];
-}
-
 export interface BlogMetadata {
   title: string;
   summary: string;

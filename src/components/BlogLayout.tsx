@@ -8,7 +8,7 @@ export default function BlogLayout({ data, children }:  {data: BlogLayoutProps, 
 
   return (
     <div className="prose dark:prose-invert container max-w-7xl mx-auto px-4 mb-8">
-          <BackBtn buttonText="Back to All Blogs" link="/blogs"/>
+          <BackBtn buttonText="All Blogs" link="/blogs"/>
           <article className="dark:bg-dark/80 bg-bg rounded-lg shadow-md p-6  border-primary border">
             <h1 className="text-center pt-12 text-3xl sm:text-4xl">{title}</h1>
             <p className="text-gray-400 text-sm mt-2 text-center">

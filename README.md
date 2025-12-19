@@ -29,7 +29,7 @@ Designed and customized by **Amelia R. Trevino** — now available as an open-so
 * **Dynamic Projects section** powered by `src/contents/projects.ts`
 * **Dynamic Blog system** using:
   * MDX files stored in `/src/contents/posts`
-  * Blog metadata stored in `/src/contents/blogs.ts`
+  * Blog metadata stored in your .mdx files
 * **Automatic routing for blog posts** (`/blogs/[slug]`)
 * **Customizable site information** through one config file: `src/config/siteConfig.ts`
 * **Configurable Theme Presets** — choose from 8 built-in color themes directly in  
@@ -57,30 +57,41 @@ Designed and customized by **Amelia R. Trevino** — now available as an open-so
 
 This repository is published as a **GitHub Template**.
 
-If you're building **your own portfolio**, do this to instantly generate your own copy and start customizing your portfolio:
+If you're building **your own portfolio**, this is the fastest way to get started:
 
 1. Click **“Use this template”** on GitHub
-2. Create your own repo from it
-3. Clone your new repo:
+2. Create your own repository from the template
+3. Clone your new repository:
 
 ```bash
 git clone https://github.com/<your-username>/<your-repo-name>.git
 cd <your-repo-name>
-npm install
-```
-You do **not** need to clone this repo directly unless you plan to contribute.
+````
 
-###  **Option 2 — Clone This Repo (For Contributors)**
+4. Install dependencies and start the dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+### Option 2 — Clone This Repository
+
+You can also clone this repository directly if you just want to explore the code or experiment locally:
 
 ```bash
 git clone https://github.com/Mela13076/devfolio-templete.git
 cd devfolio-templete
 npm install
+npm run dev
 ```
 
-Use this if you plan to **fix bugs**, **suggest features**, or **submit PRs**.
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
+You do **not** need to fork this repository unless you plan to contribute changes back.
 
+If you’d like to **fix bugs**, **suggest features**, or **submit a pull request**, please see
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
 
 ## ⬆️ **Update Your Site Configuration**
@@ -146,65 +157,65 @@ Each project takes a typed object (types are optional & documented in `src/types
 ```
 
 
-### 📝 Adding Blog Metadata
----
-
-Blog cards use metadata from:
-
-```
-src/contents/blogs.ts
-```
-
-Example:
-
-```ts
-{
-  slug: "my-first-post",
-  title: "My First Post",
-  date: "2025-01-01",
-  tags: ["Next.js", "Career"],
-  readingTime: "6 min"
-}
-```
-
-
-
 ### 📚 Adding Blog Content (MDX)
 ---
+All blog content in Devfolio is powered by MDX and uses the file system as the single source of truth.
 
-All actual blog post content is stored here:
+Blog post live here:
 
 ```
-src/contents/posts/
+src/contents/blogs/
 ```
 
-Each post must be a unique `.mdx` file:
-
+Each blog must be a its own unique `.mdx` file:
+The filename becomes the blog slug
 ```
 /src/contents/posts/my-first-post.mdx
 ```
+### Metadata
 
-At the top of the MDX file, include metadata that matches your `blogs.ts` entry:
+At the top of the MDX file, include metadata. 
+
+**Required fields**
+* `title` – string
+* `summary` – string (used for blog cards)
+* `date` – string (ISO format recommended)
+
+**Optional fields**
+* `tags` – string[]
+* `readTime` – string
+* `lastUpdated` – string
+
+Example:
 
 ```mdx
 ---
 title: "My First Post"
+summary: "A short summary of the blog post."
 date: "2025-01-01"
 tags: ["Career", "Education"]
-readingTime: "6 min"
+readTime: "6 min read"
+lastUpdated: "2025-05-01"
 ---
 
 # My First Post
 
-Your article content here...
+Your article content goes here.  
+MDX allows you to mix Markdown with React components.
 ```
 
-🔹 **Important:**
 
-* Every blog needs its own `.mdx` file
-* The filename must match its `slug`
-* Metadata **must match** what you wrote in `blogs.ts`
+### How Blogs Are Generated
 
+* Blog metadata is **automatically extracted** from MDX frontmatter
+* Blog cards and blog pages are generated at **build time**
+* No manual blog list or config file is required
+* Invalid or missing metadata will throw a **helpful error during build**
+
+🔹 **Important notes**
+
+* Every blog must have its own `.mdx` file
+* Do not manually add blog metadata anywhere else
 
 
 ## ✉️ **Contact Form Setup (Resend API)**
@@ -271,14 +282,14 @@ src/
  │    └── api/contact/route.ts
  ├── components/
  ├── contents/
- │    ├── blogs.ts
  │    ├── projects.ts
- │    └── posts/
+ │    └── blogs/
  ├── config/
  │    ├── siteConfig.ts
  │    └── themePresets.ts
  ├── types/
  ├── utils/
+ └── lib/
  
 ```
 

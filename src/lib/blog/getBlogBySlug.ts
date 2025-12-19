@@ -17,7 +17,6 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
     const fileContent = await fs.promises.readFile(filePath, 'utf8')
     //data is the metadata of the blog post & content is the actual mdx content
     const { content, data } = matter(fileContent);
-    console.log(data);
     // validate the metadata
     validateBlogMetadata(data, slug);
 
