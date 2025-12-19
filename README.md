@@ -15,7 +15,7 @@
 A modern, customizable developer portfolio built with **Next.js 15, Tailwind CSS, MDX, and Framer Motion**.
 Designed and customized by **Amelia R. Trevino** — now available as an open-source template for anyone to use, modify, and deploy.
 
-🔗 **Live Demo:** [https://art-devfolio.vercel.app](https://art-devfolio.vercel.app)
+🔗 **Live Demo:** [https://devfolio-templete.vercel.app](https://devfolio-templete.vercel.app/)
 
 📦 **Tech Stack:** Next.js 15 • TypeScript • TailwindCSS • MDX • Framer Motion • Resend Email API
 
