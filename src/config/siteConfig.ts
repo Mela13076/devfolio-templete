@@ -1,6 +1,6 @@
 
 //If you want to include blogs on your site, set showBlogs to true, otherwise set to false
-// If you set to true, make sure to create your blogs at contents/blogs.ts and your mdx files in contents/posts/
+// If you set to true, make sure to create your blog mdx files in contents/blogs/
 const showBlogs = true;
 
 export const siteConfig = {

@@ -7,13 +7,14 @@ export interface Project {
   image?: string;
 }
 
-export interface Blog {
+export interface BlogMetadata {
   title: string;
   summary: string;
   date: string;
-  readTime: string;
-  slug: string;
+  readTime?: string;
   tags?: string[];
+  slug: string;
+  lastUpdated?: string;
 }
 
 export interface BlogLayoutProps {

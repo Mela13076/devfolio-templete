@@ -1,14 +1,15 @@
 import { BlogLayoutProps } from "@/types";
 import { formatDate } from "@/utils/formatDate";
 import siteConfig from "@/config/siteConfig";
+import BackBtn from "./BackBtn";
 
 export default function BlogLayout({ data, children }:  {data: BlogLayoutProps, children: React.ReactNode}) {
   const { title, date, tags, readTime, lastUpdated } = data;
 
-
   return (
     <div className="prose dark:prose-invert container max-w-7xl mx-auto px-4 mb-8">
-          <article className="dark:bg-dark/80 rounded-lg shadow-md p-6  border-primary border">
+          <BackBtn buttonText="All Blogs" link="/blogs"/>
+          <article className="dark:bg-dark/80 bg-bg rounded-lg shadow-md p-6  border-primary border">
             <h1 className="text-center pt-12 text-3xl sm:text-4xl">{title}</h1>
             <p className="text-gray-400 text-sm mt-2 text-center">
               Written by <span className="text-primary font-medium">{siteConfig.name}</span>

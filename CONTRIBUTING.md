@@ -85,6 +85,7 @@ src/
  ├── config/          # siteConfig.ts for easy customization
  ├── types/           # Shared TypeScript types
  ├── utils/           # Utility functions
+ ├── lib/             # Reusable functions
 ```
 
 ---

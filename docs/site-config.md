@@ -289,8 +289,7 @@ blogs: {
 
 If blogs are enabled, they must:
 
-1. Create mdx files under `contents/posts/`
-2. Update the `contents/blogs.ts`  file
+1. Create mdx files under `contents/blogs/`
 
 Or the page will exist but remain empty.
 
