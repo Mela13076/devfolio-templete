@@ -5,6 +5,7 @@ import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 import { BlogMetadata } from "@/types";
 import { fadeInUp, cardHoverSmall } from '@/utils/animations'
 import Link from "next/link";
+import { formatDate } from "@/utils/formatDate";
 
 
 export default function BlogCard ({ title, summary, date, readTime, slug, tags }: BlogMetadata) {
@@ -60,7 +61,7 @@ export default function BlogCard ({ title, summary, date, readTime, slug, tags }
                 whileHover={{ scale: 1.05 }}
             >
                 <FaCalendarAlt className="mr-2" />
-                {new Date(date).toLocaleDateString()}
+                {formatDate(date)}
             </motion.span>
             {readTime &&(
               <motion.span 
