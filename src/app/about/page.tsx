@@ -17,7 +17,7 @@ export default function About() {
   const hasSkills = skillCategories.some(category => category.include);
 
   return (
-    <div className="container max-w-7xl mx-auto py-12">
+    <div className="container max-w-7xl mx-auto py-12 relative z-10">
       <motion.h1 
         className="text-4xl font-bold mb-8 text-center "
         {...fadeInDown}
