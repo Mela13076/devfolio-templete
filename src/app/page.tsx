@@ -11,7 +11,7 @@ export default async function Home() {
   const showBlogs = siteConfig.blogs.include && blogs.length > 0;
   
   return (
-    <main>
+    <main className="relative z-10">
       <Hero />
       <ProjectSection />
       {showBlogs && <Blogs blogs={blogs} />}

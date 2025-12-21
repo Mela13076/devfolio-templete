@@ -7,7 +7,7 @@ import { staggerContainer } from '@/utils/animations'
 
 export default function Projects() {
   return (
-    <div className="container max-w-7xl mx-auto py-12">
+    <div className="container max-w-7xl mx-auto py-12 relative z-10">
       <motion.h1 
         className="text-4xl font-bold mb-4 text-center"
         initial={{ opacity: 0, y: -20 }}

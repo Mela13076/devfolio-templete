@@ -8,7 +8,7 @@ export default async function Blogs() {
   const showBlogs = blogs.length > 0 
 
   return (
-    <div className="container max-w-7xl mx-auto py-12">
+    <div className="container max-w-7xl mx-auto py-12 relative z-10">
       <h1 className="text-4xl font-bold mb-8 text-center">
         Blog Posts
       </h1>
