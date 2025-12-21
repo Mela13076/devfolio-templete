@@ -8,11 +8,13 @@ import { getAllBlogs } from "@/lib/blog/getAllBlogs";
 
 export default async function Home() {
   const blogs = await getAllBlogs();
+  const showBlogs = siteConfig.blogs.include && blogs.length > 0;
+  
   return (
     <main>
       <Hero />
       <ProjectSection />
-      {siteConfig.blogs.include && <Blogs blogs={blogs} />}
+      {showBlogs && <Blogs blogs={blogs} />}
       {/* <Newsletter /> */}
     </main>
   );
