@@ -21,7 +21,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: `${siteConfig.siteName} | ${siteConfig.metadataTitle}`,
-  description: siteConfig.siteDescription
+  description: siteConfig.siteDescription,
+  icons:{
+    icon: siteConfig.tabIcon
+  }
 };
 
 

@@ -10,7 +10,7 @@ export const siteConfig = {
     metadataTitle: "Developer Portfolio Template",
     siteDescription:
         "A modern, customizable developer portfolio template built with Next.js, Tailwind CSS, and MDX.",
-     
+    tabIcon: "/icon.svg", //An image found in the public folder to use as the tab icon. 
     socials: {
         github: {
             show: true,
