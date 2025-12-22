@@ -174,7 +174,7 @@ export const siteConfig = {
     // ========================= Resend CONFIG =========================
     //Change if using the contact form
     resend: {
-        fromEmail: "Portfolio Contact <conboarding@resend.dev>", 
+        fromEmail: "Portfolio Contact <onboarding@resend.dev>", 
         toEmail: "your.email@domain.com", // your personal email
     },
 
