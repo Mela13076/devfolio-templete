@@ -360,8 +360,10 @@ Defines the sender and receiver email for the contact form.
 
 ### Important Notes
 
-* Users must create an `.env` file and add `RESEND_API_KEY` 
-* If a key is missing, the template safely returns a 500 error (CI-safe)
+* Requires a valid `RESEND_API_KEY` in an `.env` file
+* Sender domains must be verified in Resend
+* Free public domains (e.g. `.vercel.app`) are not supported
+* If the API key is missing or email delivery fails, the contact form safely returns an error
 
 
 

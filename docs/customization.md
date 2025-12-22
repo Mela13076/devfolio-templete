@@ -240,6 +240,7 @@ This will still render correctly
 
 The contact form sends emails through **Resend**. 
 
+### Setup
  1. Create a free Resend account
     - ➡ [https://resend.com](https://resend.com)
  2. Create an API key
@@ -250,8 +251,37 @@ RESEND_API_KEY=your_resend_key_here
 ```
  4. Configure your Contact Form Emails in `src/config/siteConfig.ts`
 
+```ts
+// src/config/siteConfig.ts
+resend: {
+  fromEmail: "Portfolio Contact <contact@yourdomain.com>",
+  toEmail: "your.email@domain.com",
+},
+```
 
-The API route can be found at `src/app/api/contact/route.ts` and *no changes are needed in this file*
+### Development vs Production
+
+* During development, you may use Resend’s sandbox sender:
+
+  ```
+  onboarding@resend.dev
+  ```
+* Sandbox senders are **not guaranteed for long-term or production use**
+* For production, you must verify a custom domain in Resend
+
+> Free hosting domains such as `.vercel.app` or `.github.io` cannot be used as sender domains.
+
+### Error Handling
+
+If the email fails to send (for example, due to an unverified domain), the API will return an error and the contact form will show a failure message instead of falsely reporting success.
+
+The API route is located at:
+
+```
+src/app/api/contact/route.ts
+```
+
+No changes are required in this file unless you want to customize behavior.
 
 
 
