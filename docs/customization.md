@@ -1,8 +1,8 @@
 # 📘 Customization Guide
 
-### How to Add & Customize Projects and Blogs in Your Portfolio
+### How to Add & Customize Projects, Blogs, and Contact Form in Your Portfolio
 
-This guide explains how to customize your **Projects** and **Blogs** in the Devfolio template.
+This guide explains how to customize your **Projects**, **Blogs**, and **Contact Form** in the Devfolio template.
 Each section describes the files you will work with, how they connect to the UI, and important rules to follow so everything displays correctly.
 
 
@@ -164,7 +164,7 @@ This prevents silent UI issues and keeps blog content consistent.
 
 For more details on writing MDX content, see:
 
-➡ **Blog Writing Guide** → `docs/blog-mdx-guide.md`
+➡ **Blog Writing Guide** → [docs/blog-mdx-guide.md](./blog-mdx-guide.md)
 
 # 💻 Projects
 
@@ -205,7 +205,7 @@ export const projects: Project[] = [
 
 ### ⭐ Featured Projects on Home Page
 
-Just like blogs, the **first projects in the array** appear as featured on the homepage.
+The **first projects in the array** appear as featured on the homepage.
 
 ➡ **Put your best/most important projects first.**
 
