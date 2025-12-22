@@ -36,7 +36,32 @@ siteDescription: "A modern, customizable developer portfolio template...",
 | `metadataTitle`   | Appears in the `<title>` tag in the browser     | ✔ SEO only  |
 | `siteDescription` | Used for SEO, homepage description, and embeds  | ✔ Minimal   |
 
----
+
+### 📌 **Tab Icon**
+
+You can customize the browser tab icon using the `tabIcon` field in `src/config/siteConfig.ts`:
+
+```ts
+tabIcon: "/icon.svg",
+```
+
+This value should be a **path to an image in the `public/` folder**.
+The filename must match exactly.
+
+For example:
+
+```
+public/icon.svg
+```
+
+Next.js will automatically use this value as the site’s favicon because it is wired into the root `layout.tsx` metadata configuration. No additional setup is required.
+
+**Notes**
+
+* Supported formats include `.svg`, `.png`, and `.ico`
+* The icon must live in the `public/` directory
+* Changes require a page reload to be reflected in the browser tab
+
 
 ### 📌 **Social Links**
 
