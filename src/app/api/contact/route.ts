@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Missing fields" }, { status: 400 });
     }
 
-    await resend.emails.send({
+    const {error} = await resend.emails.send({
       from: siteConfig.resend.fromEmail, // you can use a verified domain later
       to: siteConfig.resend.toEmail, // your personal email
       subject: `New message from ${name}`,
@@ -30,8 +30,16 @@ export async function POST(request: Request) {
       `,
     });
 
+    if (error){
+      console.error("Resend Error: ", error)
+      return NextResponse.json(
+        {success: false, message: error.message},
+        {status: 500}
+      );
+    }
+
     return NextResponse.json(
-      { message: 'Message sent successfully' },
+      { success: true, message: 'Message sent successfully' },
       { status: 200 }
     )
   } catch (error: unknown) {
