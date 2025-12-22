@@ -298,7 +298,7 @@ Then inside `siteConfig`:
 
 ```ts
 blogs: {
-  include: showBlogs,
+  include: showBlogs, //don't change
   description: "Read my latest articles...",
 },
 ```
@@ -318,7 +318,7 @@ If blogs are enabled, they must:
 
 Or the page will exist but remain empty.
 
-🚨 **Blog Writing Guide** → [docs/blog-mdx-guide.md](./docs/blog-mdx-guide.md) 
+🚨 **Blog Writing Guide** → [docs/blog-mdx-guide.md](./blog-mdx-guide.md) 
 
 
 # 6️⃣ **Contact Page Configuration**
