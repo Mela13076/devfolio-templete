@@ -1,6 +1,6 @@
 'use client'
 
-import { FaCode, FaLaptopCode, FaGraduationCap, FaCloud, FaDatabase } from 'react-icons/fa'
+import { FaCode, FaLaptopCode, FaGraduationCap, FaCloud, FaDatabase, FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { 
   fadeInUp, 
@@ -11,10 +11,18 @@ import {
   cardHoverSmall 
 } from '@/utils/animations'
 import siteConfig from '@/config/siteConfig'
+import Link from 'next/link'
+import { projects } from '@/contents/projects'
 
 export default function About() {
   const skillCategories = Object.values(siteConfig.about.skills);
   const hasSkills = skillCategories.some(category => category.include);
+
+  const getProjectCountForSkill = (skill: string): number => {
+    return projects.filter(project => 
+      project.skills?.some(s => s.toLowerCase() === skill.toLowerCase())
+    ).length;
+  };
 
   return (
     <div className="container max-w-7xl mx-auto py-12 relative z-10">
@@ -64,9 +72,24 @@ export default function About() {
               <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.frontend.name}</h3>
               
               <ul className="text-secondary dark:text-white space-y-2">
-                {siteConfig.about.skills.frontend.skill.map((skill) => (
-                  <li key={skill}>{skill}</li>
-                ))}
+                {siteConfig.about.skills.frontend.skill.map((skill) => {
+                  const projectCount = getProjectCountForSkill(skill);
+                  return (
+                    <li key={skill} className="flex items-center justify-between group">
+                      <span>{skill}</span>
+                      {projectCount > 0 && (
+                        <Link 
+                          href={`/projects?skill=${encodeURIComponent(skill)}`}
+                          className="ml-2 text-primary hover:text-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm"
+                          title={`View ${projectCount} project${projectCount !== 1 ? 's' : ''}`}
+                        >
+                          <FaExternalLinkAlt className="h-4 w-4" />
+                          <span className="text-xs">({projectCount})</span>
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
             )}
@@ -80,9 +103,24 @@ export default function About() {
                 <FaDatabase className="h-8 w-8 text-primary dark:text-white mb-4" />
                 <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.backend.name}</h3>
                 <ul className="text-secondary dark:text-white space-y-2">
-                  {siteConfig.about.skills.backend.skill.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
+                  {siteConfig.about.skills.backend.skill.map((skill) => {
+                    const projectCount = getProjectCountForSkill(skill);
+                    return (
+                      <li key={skill} className="flex items-center justify-between group">
+                        <span>{skill}</span>
+                        {projectCount > 0 && (
+                          <Link 
+                            href={`/projects?skill=${encodeURIComponent(skill)}`}
+                            className="ml-2 text-primary hover:text-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm"
+                            title={`View ${projectCount} project${projectCount !== 1 ? 's' : ''}`}
+                          >
+                            <FaExternalLinkAlt className="h-4 w-4" />
+                            <span className="text-xs">({projectCount})</span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             )}
@@ -96,9 +134,24 @@ export default function About() {
                 <FaCloud className="h-8 w-8 text-primary dark:text-white mb-4" />
                 <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.cloud.name}</h3>
                 <ul className="text-secondary dark:text-white space-y-2">
-                  {siteConfig.about.skills.cloud.skill.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
+                  {siteConfig.about.skills.cloud.skill.map((skill) => {
+                    const projectCount = getProjectCountForSkill(skill);
+                    return (
+                      <li key={skill} className="flex items-center justify-between group">
+                        <span>{skill}</span>
+                        {projectCount > 0 && (
+                          <Link 
+                            href={`/projects?skill=${encodeURIComponent(skill)}`}
+                            className="ml-2 text-primary hover:text-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm"
+                            title={`View ${projectCount} project${projectCount !== 1 ? 's' : ''}`}
+                          >
+                            <FaExternalLinkAlt className="h-4 w-4" />
+                            <span className="text-xs">({projectCount})</span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             )}
@@ -111,9 +164,24 @@ export default function About() {
                 <FaCode className="h-8 w-8 text-primary dark:text-white mb-4" />
                 <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.ai_security.name}</h3>
                 <ul className="text-secondary dark:text-white space-y-2">
-                  {siteConfig.about.skills.ai_security.skill.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
+                  {siteConfig.about.skills.ai_security.skill.map((skill) => {
+                    const projectCount = getProjectCountForSkill(skill);
+                    return (
+                      <li key={skill} className="flex items-center justify-between group">
+                        <span>{skill}</span>
+                        {projectCount > 0 && (
+                          <Link 
+                            href={`/projects?skill=${encodeURIComponent(skill)}`}
+                            className="ml-2 text-primary hover:text-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm"
+                            title={`View ${projectCount} project${projectCount !== 1 ? 's' : ''}`}
+                          >
+                            <FaExternalLinkAlt className="h-4 w-4" />
+                            <span className="text-xs">({projectCount})</span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             )}
@@ -126,9 +194,24 @@ export default function About() {
                 <FaGraduationCap className="h-8 w-8 text-primary dark:text-white mb-4" />
                 <h3 className="text-xl font-semibold mb-2 dark:text-primary">{siteConfig.about.skills.tools.name}</h3>
                 <ul className="text-secondary dark:text-white space-y-2">
-                  {siteConfig.about.skills.tools.skill.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
+                  {siteConfig.about.skills.tools.skill.map((skill) => {
+                    const projectCount = getProjectCountForSkill(skill);
+                    return (
+                      <li key={skill} className="flex items-center justify-between group">
+                        <span>{skill}</span>
+                        {projectCount > 0 && (
+                          <Link 
+                            href={`/projects?skill=${encodeURIComponent(skill)}`}
+                            className="ml-2 text-primary hover:text-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-sm"
+                            title={`View ${projectCount} project${projectCount !== 1 ? 's' : ''}`}
+                          >
+                            <FaExternalLinkAlt className="h-4 w-4" />
+                            <span className="text-xs">({projectCount})</span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             )}
